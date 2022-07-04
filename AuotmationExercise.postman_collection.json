@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "febce11c-89d1-4a7f-baf1-506d1deeead2",
+		"name": "AuotmationExercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19814559"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "ProductsList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"   ",
+									"    var jsonData = pm.response.json();",
+									"",
+									"     const  arry =jsonData.products;",
+									"",
+									"     console.log(arry.length)",
+									"     console.log(arry)",
+									"",
+									"})",
+									"    "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}{{ProductsList}}",
+							"host": [
+								"{{BaseUrl}}{{ProductsList}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListOfId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var idKümesi=[];",
+									"    ",
+									"  ",
+									"     let sayi = 0;",
+									" ",
+									"        for(eleman of (jsonData.products))",
+									"        {",
+									"             //console.log(\"id = \"+jsonData.products[sayi].id)",
+									"             idKümesi+=\", \"+jsonData.products[sayi].id",
+									"             ",
+									"            sayi++;",
+									"           ",
+									"        };",
+									"      console.log(\" ID Kümesi = \"+idKümesi)",
+									"   ",
+									" ",
+									"})    ",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}{{ProductsList}}",
+							"host": [
+								"{{BaseUrl}}{{ProductsList}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AllBrandsList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}{{AllBrandsList}}",
+							"host": [
+								"{{BaseUrl}}{{AllBrandsList}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "KacAdetMarkalardan",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"   ",
+									"    var jsonData = pm.response.json();",
+									"    ",
+									"    let sayi = 0;",
+									"    const arry =[];",
+									"    ",
+									"     for(eleman of jsonData.products){",
+									"        arry[sayi]=jsonData.products[sayi].brand",
+									"           sayi++;",
+									"     }",
+									"",
+									"        const uniqueObj = {};",
+									"        arry.forEach(i => {",
+									"        uniqueObj[i] = i;",
+									"       });",
+									"",
+									"       const arry3 = Object.values(uniqueObj);",
+									"       pm.expect(arry3.length).eq(8);",
+									"",
+									"       console.log(\"Farkli Marka Sayiyisi = \"+arry3.length);",
+									"       console.log(arry3);",
+									"",
+									"       //console.log(arry);",
+									"       //console.log(uniqueObj) \"key: value\" olarak print. Bu dizi de key=value",
+									"       //pm.expect(Object.values(uniqueObj).length).eq(8);",
+									"       //console.log(Object.keys(uniqueObj).length)",
+									"       //console.log(Object.values(uniqueObj));",
+									"       //if(arry[3]===\"Madame\"){console.log(\"Richtig\")}",
+									"",
+									"",
+									"})",
+									"    ",
+									"  ",
+									"       "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}{{ProductsList}}",
+							"host": [
+								"{{BaseUrl}}{{ProductsList}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PoloH&M",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"",
+									"",
+									"    let sayi = 0;",
+									"    let Pol=0;",
+									"    let HM =0;",
+									"",
+									"      for(eleman of (jsonData.products)) {",
+									" ",
+									"         if((jsonData.products[sayi]).brand==\"Polo\")",
+									"          {Pol++};",
+									"",
+									"           if((jsonData.products[sayi]).brand== \"H&M\")",
+									"          ",
+									"          { HM++ };",
+									"           sayi++;",
+									"      };",
+									"      console.log(\"Polo urun sayisi =  \"+ Pol)",
+									"      console.log(\"H&M urun sayisi =  \"+ HM)",
+									"",
+									"",
+									"});",
+									"       ",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}{{ProductsList}}",
+							"host": [
+								"{{BaseUrl}}{{ProductsList}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PriceOfProducts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    var fiyat=0;",
+									"    var fiyatKümesi=[];",
+									"    var ürünler=0;",
+									"    ",
+									"  ",
+									"     let sayi = 0;",
+									" ",
+									"        for(eleman of (jsonData.products))",
+									"        {",
+									"             console.log(\"id = \"+jsonData.products[sayi].id)",
+									"             fiyat = (jsonData.products[sayi].price).substr(4)",
+									"             //console.log(fiyat)",
+									"",
+									"             if(fiyat< 1000)",
+									"             {fiyatKümesi+=(jsonData.products[sayi].name)+\"=\"+(jsonData.products[sayi].price)+\",  \"&& console.log((jsonData.products[sayi].name)+\"=\"+(jsonData.products[sayi].price))}",
+									"             ",
+									"            sayi++;",
+									"           ",
+									"        };",
+									"      ",
+									"       // console.log(\"Fiyat Kümesi= \" +fiyatKümesi)",
+									" ",
+									"})    ",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}{{ProductsList}}",
+							"host": [
+								"{{BaseUrl}}{{ProductsList}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "ProductsList",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}{{ProductsList}}",
+							"host": [
+								"{{BaseUrl}}{{ProductsList}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
